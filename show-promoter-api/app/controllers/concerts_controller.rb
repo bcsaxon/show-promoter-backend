@@ -7,7 +7,6 @@ class ConcertsController < ApplicationController
 
     def create
       concert = Concert.create(concert_params)
-
        if concert.valid?
          render json: concert
        else
@@ -17,7 +16,7 @@ class ConcertsController < ApplicationController
 
     def show 
       concert = Concert.find(params[:id])
-      render json: concert  
+      render json: concert
     end
 
     def update
@@ -32,11 +31,11 @@ class ConcertsController < ApplicationController
     render json: {}
     end
 
+
     private
 
     def concert_params
-      params.permit(:musician_name, :date, :venue, :img_url, :cost)
-
+      params.require(:concert).permit(:id, :musician_name, :date, :venue, :img_url, :cost)
     end
 
 
