@@ -12,7 +12,7 @@ class ConcertsController < ApplicationController
        else
          render json: {errors: concert.errors.full_messages}
         end
-     end
+      end
 
     def show 
       concert = Concert.find(params[:id])
@@ -37,7 +37,6 @@ class ConcertsController < ApplicationController
     def concert_params
       params.require(:concert).permit(:id, :musician_name, :date, :venue, :img_url, :cost)
     end
-
-
+    
 end
 
